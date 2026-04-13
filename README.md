@@ -1,20 +1,48 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Wedding Reception Invitation
 
-# Run and deploy your AI Studio app
+A beautiful, interactive, and animated night-themed wedding reception invitation built with React, Tailwind CSS, and Framer Motion.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/78fce9e2-840b-42b3-a5f8-cd1809349ef5
+*   **Interactive Door Animation:** A 3D swinging door entrance that reveals the invitation.
+*   **Animated Night Sky:** Parallax scrolling mountain landscape with twinkling stars and a glowing moon.
+*   **Responsive Design:** Fully responsive layout that looks great on mobile and desktop devices.
+*   **Elegant Typography:** Uses Cinzel and Playfair Display for a classic, sophisticated look.
+*   **Interactive Elements:** Clickable location link to Google Maps and a custom heart-shaped home button.
 
-## Run Locally
+## Technologies Used
 
-**Prerequisites:**  Node.js
+*   [React](https://reactjs.org/) (v19)
+*   [Vite](https://vitejs.dev/)
+*   [Tailwind CSS](https://tailwindcss.com/) (v4)
+*   [Framer Motion](https://www.framer.com/motion/)
+*   [Lucide React](https://lucide.dev/) (Icons)
 
+## Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+To run this project locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd <your-repo-directory>
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## Deployment
+
+This project is a static site and can be easily deployed to GitHub Pages, Vercel, Netlify, or any other static hosting provider.
