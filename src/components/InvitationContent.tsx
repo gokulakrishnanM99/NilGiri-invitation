@@ -3,7 +3,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 
 export default function InvitationContent() {
   return (
-    <div className="relative z-10 min-h-[150vh] flex flex-col items-center pt-[8vh] pb-32 px-4">
+    <div className="relative z-10 min-h-[120vh] lg:min-h-[180vh] flex flex-col items-center pt-[8vh] pb-48 px-4">
       <motion.div 
         className="max-w-4xl w-full text-center space-y-8"
         initial={{ opacity: 0, y: 50 }}
@@ -31,9 +31,9 @@ export default function InvitationContent() {
         </div>
 
         {/* Names (White, Bigger, Gap Adjusted) */}
-        <div className="py-4 flex flex-col items-center justify-center space-y-2 md:space-y-4">
+        <div className="py-4 flex flex-col items-center justify-center space-y-2 md:space-y-4 w-full">
           <motion.h1 
-            className="font-display text-7xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+            className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-white text-center w-full [text-shadow:0_4px_16px_rgba(0,0,0,0.6),0_1px_3px_rgba(0,0,0,0.8)]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
@@ -41,7 +41,7 @@ export default function InvitationContent() {
             Giriprasath
           </motion.h1>
           <motion.span 
-            className="font-display text-5xl md:text-7xl text-yellow-400 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] z-10"
+            className="font-display text-4xl sm:text-5xl md:text-7xl text-yellow-400 z-10 [text-shadow:0_4px_16px_rgba(0,0,0,0.6),0_1px_3px_rgba(0,0,0,0.8)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2, duration: 1 }}
@@ -49,7 +49,7 @@ export default function InvitationContent() {
             &
           </motion.span>
           <motion.h1 
-            className="font-display text-7xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+            className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-white text-center w-full [text-shadow:0_4px_16px_rgba(0,0,0,0.6),0_1px_3px_rgba(0,0,0,0.8)]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.7, duration: 1.5, ease: "easeOut" }}

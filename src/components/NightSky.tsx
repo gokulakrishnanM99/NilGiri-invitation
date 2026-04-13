@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 // SVG Star shape
@@ -12,9 +12,9 @@ export default function NightSky() {
   const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number; delay: number; duration: number }[]>([]);
   const { scrollY } = useScroll();
   
-  // Parallax effect for the mountain and moon
-  const mountainY = useTransform(scrollY, [0, 1000], [0, 150]);
-  const moonY = useTransform(scrollY, [0, 1000], [0, 80]);
+  // Scale effect to make background look like it's moving away (smooth)
+  const rawScale = useTransform(scrollY, [0, 1000], [1, 0.85]);
+  const bgScale = useSpring(rawScale, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     // Generate random stars (reduced count)
@@ -60,19 +60,18 @@ export default function NightSky() {
         </motion.div>
       ))}
 
-      {/* Massive Moon */}
+      {/* Scalable Background Group (Moon + Mountain) */}
       <motion.div 
-        className="absolute left-1/2 -translate-x-1/2 rounded-full"
-        style={{ 
-          y: moonY,
-          top: '15vh',
-          width: '80vw',
-          height: '80vw',
-          maxWidth: '800px',
-          maxHeight: '800px',
-          background: 'radial-gradient(circle at 35% 35%, #fef08a 0%, #f59e0b 40%, #ea580c 80%, #9a3412 100%)',
-          boxShadow: '0 0 150px 40px rgba(245, 158, 11, 0.4), 0 0 80px 20px rgba(253, 230, 138, 0.6) inset'
-        }}
+        className="absolute inset-0 w-full h-full"
+        style={{ scale: bgScale, transformOrigin: 'bottom center' }}
+      >
+        {/* Massive Moon */}
+        <motion.div 
+          className="absolute left-1/2 -translate-x-1/2 rounded-full top-[18vh] w-[90vw] h-[90vw] md:top-[15vh] md:w-[70vw] md:h-[70vw] lg:top-[10vh] lg:w-[50vw] lg:h-[50vw] max-w-[700px] max-h-[700px]"
+          style={{ 
+            background: 'radial-gradient(circle at 35% 35%, #fef08a 0%, #f59e0b 40%, #ea580c 80%, #9a3412 100%)',
+            boxShadow: '0 0 150px 40px rgba(245, 158, 11, 0.4), 0 0 80px 20px rgba(253, 230, 138, 0.6) inset'
+          }}
         animate={{
           boxShadow: [
             '0 0 150px 40px rgba(245, 158, 11, 0.4), 0 0 80px 20px rgba(253, 230, 138, 0.6) inset',
@@ -89,15 +88,14 @@ export default function NightSky() {
         <div className="absolute top-[60%] left-[15%] w-[10%] h-[10%] rounded-full bg-orange-900/10 blur-sm" />
       </motion.div>
 
-      {/* Realistic Moonlight-Illuminated Mountain */}
-      <motion.div 
-        className="absolute bottom-0 w-full h-[60vh] min-h-[450px]"
-        style={{ y: mountainY }}
-      >
-        <svg 
+        {/* Realistic Moonlight-Illuminated Mountain */}
+        <div 
+          className="absolute bottom-0 w-[120%] -left-[10%] h-[55vh] min-h-[550px] sm:bottom-100 sm:w-[120%] sm:-left-[10%] sm:h-[80vh] sm:min-h-[700px] md:bottom-70 md:w-[500%] md:left-[200%] md:h-[60vh] md:min-h-[600px] lg:bottom-0 lg:w-[120%] lg:left-[-10%] lg:h-[40vh] lg:min-h-[570px]"
+        >
+          <svg 
           viewBox="0 0 1440 600" 
           className="absolute bottom-0 w-full h-full drop-shadow-[0_-10px_30px_rgba(0,0,0,0.5)]" 
-          preserveAspectRatio="none"
+          preserveAspectRatio="xMidYMin slice"
         >
           <defs>
             <radialGradient id="grad-back" cx="50%" cy="0%" r="100%">
@@ -163,6 +161,7 @@ export default function NightSky() {
             fill="url(#grad-front)" 
           />
         </svg>
+        </div>
       </motion.div>
       
       {/* Fog/Mist at the bottom */}
