@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 // SVG Star shape
@@ -10,11 +10,6 @@ const StarIcon = ({ size }: { size: number }) => (
 
 export default function NightSky() {
   const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number; delay: number; duration: number }[]>([]);
-  const { scrollY } = useScroll();
-  
-  // Scale effect to make background look like it's moving away (smooth)
-  const rawScale = useTransform(scrollY, [0, 1000], [1, 0.85]);
-  const bgScale = useSpring(rawScale, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     // Generate random stars (reduced count)
@@ -60,11 +55,8 @@ export default function NightSky() {
         </motion.div>
       ))}
 
-      {/* Scalable Background Group (Moon + Mountain) */}
-      <motion.div 
-        className="absolute inset-0 w-full h-full"
-        style={{ scale: bgScale, transformOrigin: 'bottom center' }}
-      >
+      {/* Static Background Group (Moon + Mountain) */}
+      <div className="absolute inset-0 w-full h-full">
         {/* Massive Moon */}
         <motion.div 
           className="absolute left-1/2 -translate-x-1/2 rounded-full top-[18vh] w-[90vw] h-[90vw] md:top-[15vh] md:w-[70vw] md:h-[70vw] lg:top-[10vh] lg:w-[50vw] lg:h-[50vw] max-w-[700px] max-h-[700px]"
@@ -90,7 +82,7 @@ export default function NightSky() {
 
         {/* Realistic Moonlight-Illuminated Mountain */}
         <div 
-          className="absolute bottom-0 w-[106%] -left-[3%] h-[75vh] min-h-[780px] sm:bottom-100 sm:w-[120%] sm:-left-[10%] sm:h-[80vh] sm:min-h-[700px] md:bottom-70 md:w-[500%] md:left-[200%] md:h-[60vh] md:min-h-[600px] lg:bottom-0 lg:w-[120%] lg:left-[-10%] lg:h-[40vh] lg:min-h-[570px]"
+          className="absolute bottom-0 w-full -left-0 h-[75vh] min-h-[780px] md:w-[300%] md:left-[100%] md:h-[60vh] md:min-h-[600px] lg:w-full lg:left-0 lg:h-[40vh] lg:min-h-[570px]"
         >
           <svg 
           viewBox="0 0 1440 600" 
@@ -162,7 +154,7 @@ export default function NightSky() {
           />
         </svg>
         </div>
-      </motion.div>
+      </div>
       
       {/* Fog/Mist at the bottom */}
       <div className="absolute bottom-0 w-full h-48 bg-gradient-to-t from-black via-slate-950/80 to-transparent opacity-90" />
