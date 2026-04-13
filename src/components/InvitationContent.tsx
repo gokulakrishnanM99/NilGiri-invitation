@@ -3,7 +3,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 
 export default function InvitationContent() {
   return (
-    <div className="relative z-10 min-h-[120vh] lg:min-h-[180vh] flex flex-col items-center pt-[8vh] pb-48 px-4">
+    <div className="relative z-10 min-h-[105vh] lg:min-h-[170vh] flex flex-col items-center pt-[8vh] pb-48 px-4">
       <motion.div 
         className="max-w-4xl w-full text-center space-y-8"
         initial={{ opacity: 0, y: 50 }}

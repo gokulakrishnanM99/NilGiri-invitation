@@ -90,7 +90,7 @@ export default function NightSky() {
 
         {/* Realistic Moonlight-Illuminated Mountain */}
         <div 
-          className="absolute bottom-0 w-[120%] -left-[10%] h-[75vh] min-h-[750px] sm:bottom-100 sm:w-[120%] sm:-left-[10%] sm:h-[80vh] sm:min-h-[700px] md:bottom-70 md:w-[500%] md:left-[200%] md:h-[60vh] md:min-h-[600px] lg:bottom-0 lg:w-[120%] lg:left-[-10%] lg:h-[40vh] lg:min-h-[570px]"
+          className="absolute bottom-0 w-[106%] -left-[3%] h-[75vh] min-h-[780px] sm:bottom-100 sm:w-[120%] sm:-left-[10%] sm:h-[80vh] sm:min-h-[700px] md:bottom-70 md:w-[500%] md:left-[200%] md:h-[60vh] md:min-h-[600px] lg:bottom-0 lg:w-[120%] lg:left-[-10%] lg:h-[40vh] lg:min-h-[570px]"
         >
           <svg 
           viewBox="0 0 1440 600" 
